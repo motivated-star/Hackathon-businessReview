@@ -29,6 +29,7 @@ export default function Admin() {
       // Refresh the list after approval
       loadReviews();
     } catch (err) {
+      console.log(err)
       alert("Error approving review");
     }
   };

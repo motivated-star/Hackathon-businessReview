@@ -11,12 +11,17 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.sendStatus(401);
-  const ok = await bcrypt.compare(req.body.password, user.password); // Compare hashed password
-  if (!ok) return res.sendStatus(401);
-  const token = jwt.sign(user.toJSON(), process.env.JWT_SECRET); // Generate JWT
-  res.json({ token, role: user.role }); // Send token and role back
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+
+  if (!user) return res.status(404).json({ message: "User not found" });
+
+  // ADD THIS: Compare passwords
+  const isCorrect = await bcrypt.compare(password, user.password);
+  if (!isCorrect) return res.status(400).json({ message: "Invalid credentials" });
+
+  const token = jwt.sign({ id: user._id }, "secret", { expiresIn: "1h" });
+  res.json({ token, user });
 });
 
 module.exports = router;
