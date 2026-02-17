@@ -1,24 +1,24 @@
 import { useState } from 'react';
-import { register } from '../api'; // Use register for the signup page
+import { register } from '../api'; 
 import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
-  // 1. Initialize state to match the fields your backend expects (e.g., name, email, password)
+ 
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 2. Call the register API with the correct state variable 'form'
+      
       const { data } = await register(form);
       
-      // 3. Store the token and user data in localStorage
+      
       localStorage.setItem('token', data.token); 
       localStorage.setItem('profile', JSON.stringify(data.user)); 
       
       alert("Registration Successful!");
-      navigate('/'); // Redirect to home page
+      navigate('/'); 
     } catch (err) {
       console.error("Signup Error:", err.response?.data?.message || err.message);
       alert(err.response?.data?.message || "Signup failed. Please try again.");
@@ -30,7 +30,7 @@ export default function Signup() {
       <h2>Create Account</h2>
       <p>Join our community of reviewers</p>
       <form onSubmit={handleSubmit}>
-        {/* Added Name field which is typically required for user registration */}
+      
         <input 
           type="text" 
           placeholder="Full Name" 

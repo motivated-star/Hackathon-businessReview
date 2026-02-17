@@ -1,28 +1,28 @@
 import { useState } from 'react';
-import { login } from '../api'; //
-import { useNavigate } from 'react-router-dom'; //
+import { login } from '../api'; 
+import { useNavigate } from 'react-router-dom'; 
 
 export default function Login() {
-  // 1. Maintain consistent state with the input fields
+  
   const [form, setForm] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 2. Use the correct state variable 'form' (not 'formData')
+    
       const { data } = await login(form);
       
-      // 3. Store the JWT token and user profile
+     
       localStorage.setItem('token', data.token); 
       localStorage.setItem('profile', JSON.stringify(data.user)); 
       
       alert("Login Successful!");
       
-      // 4. Redirect the user to the home page
+    
       navigate('/');
     } catch (err) {
-      // 5. Enhanced error logging for debugging
+     
       console.error("Login Error:", err.response?.data?.message || err.message);
       alert(err.response?.data?.message || "Login failed. Check your credentials.");
     }

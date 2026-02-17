@@ -12,7 +12,7 @@ body {
   color: var(--text-color);
 }
 
-/* Navbar Styling */
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -34,7 +34,7 @@ nav {
   font-weight: 500;
 }
 
-/* Meaningful Buttons */
+
 .btn {
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
@@ -64,7 +64,7 @@ nav {
   background-color: #eff6ff;
 }
 
-/* Form Styling */
+
 .auth-card {
   max-width: 400px;
   margin: 4rem auto;
