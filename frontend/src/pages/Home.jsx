@@ -9,6 +9,8 @@ export default function Home() {
   const [reviewInputs, setReviewInputs] = useState({});
 
   useEffect(() => {
+
+
     fetchBusinesses().then(({ data }) => {
       setBusinesses(data);
       setFilteredBusinesses(data);
@@ -35,6 +37,8 @@ export default function Home() {
     }
 
     setFilteredBusinesses(result);
+
+    
   }, [search, filters, businesses]);
 
   const handleInputChange = (bizId, field, value) => {
@@ -79,6 +83,7 @@ export default function Home() {
       
       fetchBusinesses().then(({ data }) => setFilteredBusinesses(data));
     } catch (err) {
+      console.log(err)
       alert("Error submitting review. Please try again.");
     }
   };

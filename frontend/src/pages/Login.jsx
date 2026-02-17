@@ -2,31 +2,28 @@ import { useState } from 'react';
 import { login } from '../api'; 
 import { useNavigate } from 'react-router-dom'; 
 
+
+
 export default function Login() {
   
   const [form, setForm] = useState({ email: '', password: '' });
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
+  e.preventDefault();
+  try {
+    const { data } = await login(form);
+    localStorage.setItem('token', data.token); 
+    localStorage.setItem('profile', JSON.stringify(data.user)); 
+    localStorage.setItem('role', data.user.role);
     
-      const { data } = await login(form);
-      
-     
-      localStorage.setItem('token', data.token); 
-      localStorage.setItem('profile', JSON.stringify(data.user)); 
-      
-      alert("Login Successful!");
-      
-    
-      navigate('/');
-    } catch (err) {
-     
-      console.error("Login Error:", err.response?.data?.message || err.message);
-      alert(err.response?.data?.message || "Login failed. Check your credentials.");
-    }
-  };
+    alert("Login Successful!");
+    navigate('/');
+  } catch (err) {
+    console.log(err)
+  }
+};
+
+
 
   return (
     <div className="auth-card">
