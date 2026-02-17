@@ -5,7 +5,7 @@ export default function Admin() {
   const [pendingReviews, setPendingReviews] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Function to load or refresh the list of pending reviews
+  
   const loadReviews = async () => {
     try {
       const { data } = await getPendingReviews();
@@ -23,10 +23,10 @@ export default function Admin() {
 
   const handleApprove = async (reviewId) => {
     try {
-      // Calls the POST /api/review/approve/:id route
+      
       await approveReview(reviewId);
       alert("Review approved! Business rating updated.");
-      // Refresh the list after approval
+      
       loadReviews();
     } catch (err) {
       console.log(err)

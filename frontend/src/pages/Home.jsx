@@ -8,7 +8,7 @@ export default function Home() {
   const [filters, setFilters] = useState({ category: "", location: "" });
   const [newReview, setNewReview] = useState({ rating: 5, comment: "" });
 
-  /* Fetch businesses */
+ 
   useEffect(() => {
     fetchBusinesses().then(({ data }) => {
       setBusinesses(data);
@@ -16,7 +16,7 @@ export default function Home() {
     });
   }, []);
 
-  /* Filter logic */
+
   useEffect(() => {
     let result = businesses;
 
@@ -39,7 +39,7 @@ export default function Home() {
     setFilteredBusinesses(result);
   }, [search, filters, businesses]);
 
-  /* Submit review */
+ 
   const handleReviewSubmit = async (businessId) => {
     try {
       await submitReview({
@@ -60,7 +60,7 @@ export default function Home() {
 
   return (
     <div style={styles.page}>
-      {/* HEADER */}
+      
       <div style={styles.header}>
         <h1 style={styles.title}>Discover & Review Businesses</h1>
 
@@ -69,7 +69,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* FILTER BAR */}
+    
 
       <div style={styles.filterBar}>
         <input
@@ -84,8 +84,8 @@ export default function Home() {
         >
           <option value="">All Categories</option>
           <option value="Restaurant">Restaurant</option>
-          <option value="Retail">Retail</option>
-          <option value="Services">Services</option>
+          <option value="Cafe">Cafe</option>
+          
           <option value="Hotel">Hotel</option>
         </select>
 
@@ -96,12 +96,12 @@ export default function Home() {
         />
       </div>
 
-      {/* BUSINESS GRID */}
+     
 
       <div style={styles.grid}>
         {filteredBusinesses.map((biz) => (
           <div key={biz._id} style={styles.card}>
-            {/* Card Header */}
+        
 
             <div style={styles.cardHeader}>
               <h3 style={styles.businessName}>{biz.name}</h3>
@@ -109,11 +109,11 @@ export default function Home() {
               <span style={styles.category}>{biz.category}</span>
             </div>
 
-            {/* Location */}
+         
 
             <div style={styles.location}>📍 {biz.location}</div>
 
-            {/* Rating */}
+        
 
             <div style={styles.rating}>
               ⭐ {biz.avgRating > 0 ? biz.avgRating.toFixed(1) : "No ratings"}
@@ -121,7 +121,7 @@ export default function Home() {
 
             <div style={styles.divider}></div>
 
-            {/* Review Section */}
+           
 
             <div>
               <label style={styles.label}>Your Rating</label>
@@ -169,7 +169,7 @@ export default function Home() {
   );
 }
 
-/* PROFESSIONAL STYLES */
+
 
 const styles = {
   page: {
