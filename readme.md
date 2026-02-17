@@ -103,6 +103,12 @@ crowd-review/
 
 ---
 
+**Screenshots:**
+
+<img width="1920" height="1080" alt="Screenshot 2026-02-17 164216 - Copy" src="https://github.com/user-attachments/assets/0896be7d-bf58-45d8-bba3-8265e4cdfe19" />
+
+
+
 ## ▶️ How to Run the Project Locally
 
 ### Backend
