@@ -1,6 +1,6 @@
 # Crowd-Sourced Business Review Platform (MERN) 
 
-Click here for [WORKING DEMO](https://drive.google.com/file/d/1mluCgL8tPNPVD4IeGx9ft9b5WW6AWk9D/view?usp=sharing)
+Click here for [WORKING DEMO](https://drive.google.com/file/d/1eHcAOfC5b8AuAc4dnvWsX2pIFLGBs58c/view?usp=drive_link)
 
 A full-stack **MERN application** that allows users to discover local businesses, post reviews and ratings, and ensures review authenticity through **admin moderation**.
 
