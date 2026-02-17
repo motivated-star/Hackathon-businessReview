@@ -6,17 +6,19 @@ export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await login(form);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('role', data.role);
-      navigate('/');
-    } catch (err) {
-      alert("Invalid credentials");
-    }
-  };
+// frontend/src/pages/Login.jsx
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const { data } = await login(form);
+    localStorage.setItem('token', data.token); // Save token for authentication
+    localStorage.setItem('role', data.role);   // Save role for UI permissions
+    navigate('/'); 
+  } catch (err) {
+    console.error(err);
+    alert("Invalid credentials");
+  }
+};
 
   return (
     <div className="login-container">

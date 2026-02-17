@@ -6,16 +6,18 @@ export default function Signup() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await register(form);
-      alert("Registration successful! Please login.");
-      navigate('/login');
-    } catch (err) {
-      alert("Signup failed. Email might already exist.");
-    }
-  };
+ // frontend/src/pages/Signup.jsx
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await register(form); // Call API function
+    alert("Registration successful!");
+    navigate('/login'); // Redirect to login
+  } catch (err) {
+    console.error(err);
+    alert("Signup failed.");
+  }
+};
 
   return (
     <div className="auth-card">
